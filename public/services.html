@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive dermatology and cosmetic services including acne treatment, anti-aging, laser procedures, and personalized skincare plans.">
+    <title>Services - Dr. Anum Dermatology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Dr. Anum</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><button class="btn-primary" onclick="window.location.href='index.html#booking'">Book Appointment</button></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Hero -->
+    <section class="hero" style="min-height: 60vh; padding-top: 120px;">
+        <div class="hero-content" style="grid-template-columns: 1fr;">
+            <div class="hero-text" style="text-align: center;">
+                <h1>Our Services</h1>
+                <p>Comprehensive dermatology and cosmetic treatments tailored to your unique needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services">
+        <div class="section-header">
+            <p class="section-subtitle">What We Offer</p>
+            <h2>Complete Skin Care Solutions</h2>
+        </div>
+
+        <div class="services-grid">
+            <!-- Medical Dermatology -->
+            <div class="service-card" style="grid-column: span 2;">
+                <div class="service-icon">🩺</div>
+                <h3>Medical Dermatology</h3>
+                <p>Comprehensive diagnosis and treatment of skin conditions including eczema, psoriasis, rosacea, and skin infections. Our medical dermatology services focus on restoring skin health through evidence-based treatments.</p>
+
+                <h4 style="margin-top: 1.5rem; color: var(--color-rose-gold);">What We Treat:</h4>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Eczema and Dermatitis</li>
+                    <li>Psoriasis</li>
+                    <li>Rosacea</li>
+                    <li>Skin Infections</li>
+                    <li>Allergic Reactions</li>
+                    <li>Skin Cancer Screening</li>
+                </ul>
+
+                <p><strong>Duration:</strong> 30-45 minutes | <strong>Recovery:</strong> Varies by condition</p>
+                <button class="btn-primary" onclick="window.location.href='index.html#booking'" style="margin-top: 1rem;">Book Consultation</button>
+            </div>
+
+            <!-- Acne & Scar Treatment -->
+            <div class="service-card" style="grid-column: span 2;">
+                <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <h3>Acne & Scar Treatment</h3>
+                <p>Advanced therapies to clear active acne and reduce scarring. We offer a combination of medical treatments, chemical peels, laser therapy, and customized skincare regimens for optimal results.</p>
+
+                <h4 style="margin-top: 1.5rem; color: var(--color-rose-gold);">Treatment Options:</h4>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Prescription Medications (Topical & Oral)</li>
+                    <li>Chemical Peels</li>
+                    <li>Microneedling</li>
+                    <li>Laser Resurfacing</li>
+                    <li>LED Light Therapy</li>
+                    <li>Customized Skincare Plans</li>
+                </ul>
+
+                <p><strong>Duration:</strong> 30-60 minutes per session | <strong>Recovery:</strong> Minimal to 3-5 days</p>
+                <button class="btn-primary" onclick="window.location.href='index.html#booking'" style="margin-top: 1rem;">Book Consultation</button>
+            </div>
+
+            <!-- Anti-Aging & Botox -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 20v-6M6 20V10M18 20V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3>Anti-Aging & Botox</h3>
+                <p>Non-surgical solutions to reduce fine lines, wrinkles, and restore youthful radiance. Our anti-aging treatments are customized to achieve natural-looking results.</p>
+
+                <h4 style="margin-top: 1.5rem; color: var(--color-rose-gold);">Includes:</h4>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Botox Injections</li>
+                    <li>Dysport</li>
+                    <li>Forehead Lines</li>
+                    <li>Crow's Feet</li>
+                    <li>Frown Lines</li>
+                </ul>
+
+                <p><strong>Duration:</strong> 15-30 minutes</p>
+                <p><strong>Results Last:</strong> 3-4 months</p>
+                <button class="btn-primary" onclick="window.location.href='index.html#booking'" style="margin-top: 1rem;">Book Now</button>
+            </div>
+
+            <!-- Dermal Fillers -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3>Cosmetic Fillers</h3>
+                <p>Restore volume, contour, and create natural-looking enhancement with FDA-approved dermal fillers.</p>
+
+                <h4 style="margin-top: 1.5rem; color: var(--color-rose-gold);">Treatment Areas:</h4>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Lips</li>
+                    <li>Cheeks</li>
+                    <li>Under Eyes</li>
+                    <li>Nasolabial Folds</li>
+                    <li>Jawline</li>
+                </ul>
+
+                <p><strong>Duration:</strong> 30-45 minutes</p>
+                <p><strong>Results Last:</strong> 6-18 months</p>
+                <button class="btn-primary" onclick="window.location.href='index.html#booking'" style="margin-top: 1rem;">Book Now</button>
+            </div>
+
+            <!-- Laser Skin Resurfacing -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 1v6m0 6v6M23 12h-6m-6 0H1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3>Laser Skin Resurfacing</h3>
+                <p>State-of-the-art laser treatments for skin rejuvenation, pigmentation correction, and texture improvement.</p>
+
+                <h4 style="margin-top: 1.5rem; color: var(--color-rose-gold);">Treats:</h4>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Sun Damage</li>
+                    <li>Age Spots</li>
+                    <li>Uneven Texture</li>
+                    <li>Fine Lines</li>
+                    <li>Scars</li>
+                </ul>
+
+                <p><strong>Duration:</strong> 30-90 minutes</p>
+                <p><strong>Recovery:</strong> 5-7 days</p>
+                <button class="btn-primary" onclick="window.location.href='index.html#booking'" style="margin-top: 1rem;">Book Now</button>
+            </div>
+
+            <!-- Hair Loss Treatment -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 14v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3>Hair Loss Treatment (PRP)</h3>
+                <p>Platelet-rich plasma therapy to stimulate hair growth and restore hair density naturally using your body's own healing factors.</p>
+
+                <h4 style="margin-top: 1.5rem; color: var(--color-rose-gold);">Benefits:</h4>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Natural Hair Regrowth</li>
+                    <li>Increased Hair Density</li>
+                    <li>Stronger Hair Follicles</li>
+                    <li>No Surgery Required</li>
+                </ul>
+
+                <p><strong>Duration:</strong> 60 minutes</p>
+                <p><strong>Sessions:</strong> 3-6 treatments</p>
+                <button class="btn-primary" onclick="window.location.href='index.html#booking'" style="margin-top: 1rem;">Book Now</button>
+            </div>
+
+            <!-- Chemical Peels -->
+            <div class="service-card">
+                <div class="service-icon">🧪</div>
+                <h3>Chemical Peels</h3>
+                <p>Professional-grade peels to exfoliate, brighten, and renew your skin's appearance. Available in light, medium, and deep strengths.</p>
+
+                <h4 style="margin-top: 1.5rem; color: var(--color-rose-gold);">Types:</h4>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Glycolic Acid Peel</li>
+                    <li>Salicylic Acid Peel</li>
+                    <li>TCA Peel</li>
+                    <li>Jessner's Peel</li>
+                </ul>
+
+                <p><strong>Duration:</strong> 30-45 minutes</p>
+                <p><strong>Recovery:</strong> 3-7 days</p>
+                <button class="btn-primary" onclick="window.location.href='index.html#booking'" style="margin-top: 1rem;">Book Now</button>
+            </div>
+
+            <!-- Skin Brightening -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h3>Skin Whitening & Brightening</h3>
+                <p>Safe, effective treatments to even skin tone, reduce hyperpigmentation, and enhance natural radiance.</p>
+
+                <h4 style="margin-top: 1.5rem; color: var(--color-rose-gold);">Methods:</h4>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Glutathione IV Therapy</li>
+                    <li>Vitamin C Treatments</li>
+                    <li>Laser Toning</li>
+                    <li>Brightening Peels</li>
+                </ul>
+
+                <p><strong>Duration:</strong> 30-60 minutes</p>
+                <p><strong>Sessions:</strong> Multiple recommended</p>
+                <button class="btn-primary" onclick="window.location.href='index.html#booking'" style="margin-top: 1rem;">Book Now</button>
+            </div>
+
+            <!-- Mole Removal -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                        <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M11 8v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M8 11h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3>Mole & Lesion Removal</h3>
+                <p>Safe removal of unwanted moles, skin tags, and benign lesions with minimal scarring using advanced techniques.</p>
+
+                <h4 style="margin-top: 1.5rem; color: var(--color-rose-gold);">Procedures:</h4>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Surgical Excision</li>
+                    <li>Laser Removal</li>
+                    <li>Cryotherapy</li>
+                    <li>Electrocautery</li>
+                </ul>
+
+                <p><strong>Duration:</strong> 15-30 minutes</p>
+                <p><strong>Recovery:</strong> 1-2 weeks</p>
+                <button class="btn-primary" onclick="window.location.href='index.html#booking'" style="margin-top: 1rem;">Book Now</button>
+            </div>
+
+            <!-- Customized Skincare -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="9" y="3" width="6" height="4" rx="1" stroke="currentColor" stroke-width="2"/>
+                        <path d="M9 12h6m-6 4h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3>Customized Skincare Plans</h3>
+                <p>Personalized skincare regimens designed specifically for your skin type, concerns, and lifestyle.</p>
+
+                <h4 style="margin-top: 1.5rem; color: var(--color-rose-gold);">Includes:</h4>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Skin Analysis</li>
+                    <li>Product Recommendations</li>
+                    <li>Daily Routine Guide</li>
+                    <li>Follow-up Consultations</li>
+                </ul>
+
+                <p><strong>Duration:</strong> 45-60 minutes</p>
+                <p><strong>Follow-ups:</strong> Every 3 months</p>
+                <button class="btn-primary" onclick="window.location.href='index.html#booking'" style="margin-top: 1rem;">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Process -->
+    <section class="services" style="background: var(--color-white); padding: 4rem 5%; border-radius: 30px; margin: 0 5%;">
+        <div class="section-header">
+            <p class="section-subtitle">How It Works</p>
+            <h2>Your Treatment Journey</h2>
+        </div>
+
+        <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <div style="text-align: center; padding: 2rem;">
+                <div style="width: 80px; height: 80px; background: var(--color-rose-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem; color: white;">1</div>
+                <h4>Initial Consultation</h4>
+                <p>Meet with Dr. Anum to discuss your concerns, goals, and medical history.</p>
+            </div>
+
+            <div style="text-align: center; padding: 2rem;">
+                <div style="width: 80px; height: 80px; background: var(--color-rose-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem; color: white;">2</div>
+                <h4>Skin Analysis</h4>
+                <p>Comprehensive evaluation of your skin condition and treatment needs.</p>
+            </div>
+
+            <div style="text-align: center; padding: 2rem;">
+                <div style="width: 80px; height: 80px; background: var(--color-rose-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem; color: white;">3</div>
+                <h4>Custom Treatment Plan</h4>
+                <p>Receive a personalized plan tailored to your unique needs and goals.</p>
+            </div>
+
+            <div style="text-align: center; padding: 2rem;">
+                <div style="width: 80px; height: 80px; background: var(--color-rose-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem; color: white;">4</div>
+                <h4>Treatment Sessions</h4>
+                <p>Begin your treatments in our comfortable, state-of-the-art facility.</p>
+            </div>
+
+            <div style="text-align: center; padding: 2rem;">
+                <div style="width: 80px; height: 80px; background: var(--color-rose-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem; color: white;">5</div>
+                <h4>Follow-Up Care</h4>
+                <p>Regular check-ins to monitor progress and adjust treatments as needed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="about" style="text-align: center; padding: 4rem 5%;">
+        <h2>Ready to Transform Your Skin?</h2>
+        <p style="max-width: 600px; margin: 1rem auto 2rem;">Book a consultation to discover which treatments are right for you.</p>
+        <button class="btn-primary" onclick="window.location.href='index.html#booking'" style="font-size: 1.1rem; padding: 1rem 3rem;">Schedule Consultation</button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 class="logo">Dr. Anum</h4>
+                <p>Expert dermatology and cosmetic treatments for your most confident skin.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="services.html">Medical Dermatology</a></li>
+                    <li><a href="services.html">Cosmetic Treatments</a></li>
+                    <li><a href="services.html">Laser Procedures</a></li>
+                    <li><a href="services.html">Hair Restoration</a></li>
+                    <li><a href="services.html">Skincare Plans</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li>123 Medical Plaza, Suite 456</li>
+                    <li>Beverly Hills, CA 90210</li>
+                    <li>(555) 123-4567</li>
+                    <li>info@dranum.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dr. Anum. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

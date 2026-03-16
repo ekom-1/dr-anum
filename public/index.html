@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dr. Anum - Expert dermatology, hair restoration, and cosmetic treatments. Certified dermatologist offering personalized skincare solutions.">
+    <meta name="keywords" content="dermatologist, skin care, cosmetic treatments, hair restoration, acne treatment, anti-aging">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Dr. Anum - Premium Dermatology & Cosmetic Specialist">
+    <meta property="og:description" content="Reveal your most confident skin with expert dermatology and personalized treatment plans.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/images/og-image.jpg">
+
+    <title>Dr. Anum - Premium Dermatology & Cosmetic Specialist</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">Dr. Anum</a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="btn-primary" onclick="scrollToBooking()">Book Appointment</button></li>
+            </ul>
+
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Reveal Your Most Confident Skin</h1>
+                <p>Expert dermatology, hair restoration, and cosmetic treatments — personalized for you.</p>
+
+                <div class="hero-cta">
+                    <button class="btn-primary" onclick="scrollToBooking()">Book Your Appointment</button>
+                    <button class="btn-secondary" onclick="scrollToSection('services')">Explore Treatments</button>
+                </div>
+
+                <div class="trust-badges">
+                    <div class="badge">
+                        <div class="badge-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span>Certified Dermatologist</span>
+                    </div>
+                    <div class="badge">
+                        <div class="badge-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <span>500+ Satisfied Patients</span>
+                    </div>
+                    <div class="badge">
+                        <div class="badge-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <span>Personalized Care</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-woman.webp" alt="Beautiful woman with glowing skin - Dr. Anum Dermatology">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header">
+            <p class="section-subtitle">About Dr. Anum</p>
+            <h2>Your Partner in Skin Health</h2>
+        </div>
+
+        <div class="about-content">
+            <div class="about-image">
+                <img src="images/Doctor Profile Photo.png" alt="Dr. Anum - Board-Certified Dermatologist">
+            </div>
+
+            <div class="about-text">
+                <h3>Dr. Anum Khan, MD</h3>
+                <h4>Board-Certified Dermatologist</h4>
+                <p>With over 12 years of experience in medical and cosmetic dermatology, Dr. Anum is dedicated to helping patients achieve healthy, radiant skin through evidence-based treatments and personalized care.</p>
+
+                <p>Dr. Anum believes that every patient deserves a customized approach to skincare. Her philosophy combines the latest medical advances with a deep understanding of individual skin needs, ensuring optimal results for every treatment.</p>
+
+                <div class="credentials">
+                    <div class="credential-item">
+                        <div class="credential-icon" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: var(--color-rose-gold); border-radius: 50%;">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px; stroke: white; stroke-width: 2;">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6 12v5c0 1 2 3 6 3s6-2 6-3v-5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Education</strong>
+                            <p>MD, Dermatology<br>Harvard Medical School</p>
+                        </div>
+                    </div>
+                    <div class="credential-item">
+                        <div class="credential-icon" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: var(--color-rose-gold); border-radius: 50%;">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px; stroke: white; stroke-width: 2;">
+                                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M12 3v18m-4-4l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Certifications</strong>
+                            <p>Board Certified<br>American Academy of Dermatology</p>
+                        </div>
+                    </div>
+                    <div class="credential-item">
+                        <div class="credential-icon" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: var(--color-rose-gold); border-radius: 50%;">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px; stroke: white; stroke-width: 2;">
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Experience</strong>
+                            <p>12+ Years<br>Medical & Cosmetic Dermatology</p>
+                        </div>
+                    </div>
+                    <div class="credential-item">
+                        <div class="credential-icon" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: var(--color-rose-gold); border-radius: 50%;">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px; stroke: white; stroke-width: 2;">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Patients</strong>
+                            <p>500+ Happy Patients<br>Personalized Treatment Plans</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured About Image Section -->
+    <section style="padding: 0; margin: 0;">
+        <div style="width: 100%; overflow: hidden;">
+            <img src="images/Main about section, large featured image.png" alt="Dr. Anum Dermatology Clinic" style="width: 100%; height: auto; object-fit: cover; display: block;">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <p class="section-subtitle">Our Services</p>
+            <h2>Comprehensive Skin Care Solutions</h2>
+            <p>From medical dermatology to advanced cosmetic treatments, we offer a full range of services tailored to your unique needs.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h4>Medical Dermatology</h4>
+                <p>Comprehensive diagnosis and treatment of skin conditions including eczema, psoriasis, and skin infections.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h4>Acne & Scar Treatment</h4>
+                <p>Advanced therapies to clear acne and reduce scarring for smoother, clearer skin.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 20v-6M6 20V10M18 20V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h4>Anti-Aging & Botox</h4>
+                <p>Non-surgical solutions to reduce fine lines, wrinkles, and restore youthful radiance.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 1v6m0 6v6M23 12h-6m-6 0H1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h4>Laser Skin Resurfacing</h4>
+                <p>State-of-the-art laser treatments for skin rejuvenation, pigmentation, and texture improvement.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 14v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h4>Hair Loss Treatment (PRP)</h4>
+                <p>Platelet-rich plasma therapy to stimulate hair growth and restore hair density naturally.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12.5 16.5c2.5 0 4.5 -1.5 4.5 -3.5s-2 -3.5 -4.5 -3.5s-4.5 1.5 -4.5 3.5s2 3.5 4.5 3.5z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h4>Chemical Peels</h4>
+                <p>Professional-grade peels to exfoliate, brighten, and renew your skin's appearance.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h4>Skin Whitening & Brightening</h4>
+                <p>Safe, effective treatments to even skin tone and enhance natural radiance.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h4>Cosmetic Fillers</h4>
+                <p>Dermal fillers to restore volume, contour, and create natural-looking enhancement.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                        <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M11 8v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M8 11h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h4>Mole & Lesion Removal</h4>
+                <p>Safe removal of unwanted moles, skin tags, and benign lesions with minimal scarring.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="9" y="3" width="6" height="4" rx="1" stroke="currentColor" stroke-width="2"/>
+                        <path d="M9 12h6m-6 4h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h4>Customized Skincare Plans</h4>
+                <p>Personalized skincare regimens designed specifically for your skin type and concerns.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="section-header">
+            <p class="section-subtitle">Why Choose Dr. Anum</p>
+            <h2>Excellence in Every Treatment</h2>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h4>Personalized Consultations</h4>
+                <p>Every treatment begins with a thorough consultation to understand your unique skin concerns and goals.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 1v6m0 6v6M23 12h-6m-6 0H1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h4>Evidence-Based Treatments</h4>
+                <p>We use only clinically proven methods and FDA-approved products for safe, effective results.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h4>State-of-the-Art Clinic</h4>
+                <p>Modern facility equipped with the latest technology for advanced dermatological care.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h4>Compassionate Patient Care</h4>
+                <p>We prioritize your comfort and well-being throughout your entire treatment journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header">
+            <p class="section-subtitle">Patient Stories</p>
+            <h2>What Our Patients Say</h2>
+        </div>
+
+        <div class="testimonials-carousel">
+            <div class="testimonial-track" id="testimonialTrack">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">"Dr. Anum transformed my skin! After struggling with acne for years, her personalized treatment plan finally gave me the clear skin I'd always wanted. She's knowledgeable, caring, and truly listens to her patients."</p>
+                    <p class="testimonial-author">Sarah M.</p>
+                    <p class="testimonial-treatment">Acne Treatment</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">"The Botox and filler treatments were exactly what I needed. Dr. Anum has an artistic eye and made sure the results looked natural. I feel more confident than ever!"</p>
+                    <p class="testimonial-author">Jennifer L.</p>
+                    <p class="testimonial-treatment">Anti-Aging Treatment</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">"Professional, clean clinic with the latest equipment. Dr. Anum explained every step of my laser treatment and the results exceeded my expectations. Highly recommend!"</p>
+                    <p class="testimonial-author">Michael R.</p>
+                    <p class="testimonial-treatment">Laser Resurfacing</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">"The PRP hair treatment has been life-changing. I was skeptical at first, but after a few sessions, I noticed significant hair regrowth. Dr. Anum is a true expert!"</p>
+                    <p class="testimonial-author">David K.</p>
+                    <p class="testimonial-treatment">Hair Loss Treatment</p>
+                </div>
+            </div>
+
+            <div class="carousel-controls">
+                <button class="carousel-btn" onclick="previousTestimonial()">←</button>
+                <button class="carousel-btn" onclick="nextTestimonial()">→</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <div class="section-header">
+            <p class="section-subtitle">Book Appointment</p>
+            <h2>Schedule Your Consultation</h2>
+            <p>Take the first step towards healthier, more beautiful skin. Book your appointment today.</p>
+        </div>
+
+        <form class="booking-form" id="bookingForm">
+            <div class="form-group">
+                <label for="bookingName">Full Name *</label>
+                <input type="text" id="bookingName" name="bookingName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bookingPhone">Phone Number *</label>
+                <input type="tel" id="bookingPhone" name="bookingPhone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bookingEmail">Email Address *</label>
+                <input type="email" id="bookingEmail" name="bookingEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bookingDate">Preferred Date *</label>
+                <input type="date" id="bookingDate" name="bookingDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bookingTime">Preferred Time *</label>
+                <select id="bookingTime" name="bookingTime" required>
+                    <option value="">Select a time</option>
+                    <option value="09:00">9:00 AM</option>
+                    <option value="10:00">10:00 AM</option>
+                    <option value="11:00">11:00 AM</option>
+                    <option value="12:00">12:00 PM</option>
+                    <option value="14:00">2:00 PM</option>
+                    <option value="15:00">3:00 PM</option>
+                    <option value="16:00">4:00 PM</option>
+                    <option value="17:00">5:00 PM</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bookingService">Treatment / Service *</label>
+                <select id="bookingService" name="bookingService" required>
+                    <option value="">Select a service</option>
+                    <option value="medical-dermatology">Medical Dermatology</option>
+                    <option value="acne-treatment">Acne & Scar Treatment</option>
+                    <option value="anti-aging">Anti-Aging & Botox</option>
+                    <option value="laser-resurfacing">Laser Skin Resurfacing</option>
+                    <option value="hair-loss">Hair Loss Treatment (PRP)</option>
+                    <option value="chemical-peels">Chemical Peels</option>
+                    <option value="skin-brightening">Skin Whitening & Brightening</option>
+                    <option value="fillers">Cosmetic Fillers</option>
+                    <option value="mole-removal">Mole & Lesion Removal</option>
+                    <option value="skincare-plan">Customized Skincare Plan</option>
+                </select>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="bookingMessage">Message or Concern (Optional)</label>
+                <textarea id="bookingMessage" name="bookingMessage" placeholder="Tell us about your skin concerns or questions..."></textarea>
+            </div>
+
+            <div class="form-group full-width">
+                <button type="submit" class="btn-primary" style="width: 100%;">Book Appointment</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="section-header">
+            <p class="section-subtitle">FAQ</p>
+            <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What should I expect on my first visit?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Your first visit will include a comprehensive skin consultation where Dr. Anum will assess your skin concerns, review your medical history, and discuss your treatment goals. She'll then recommend a personalized treatment plan tailored to your needs.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How do I prepare for a laser or chemical peel treatment?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Avoid sun exposure for 2 weeks before treatment, discontinue retinoids 3-5 days prior, and arrive with clean skin (no makeup). Dr. Anum will provide detailed pre-treatment instructions specific to your procedure during your consultation.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Are cosmetic treatments safe?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Yes, all our cosmetic treatments use FDA-approved products and are performed by Dr. Anum, a board-certified dermatologist with extensive training. We follow strict safety protocols and use only evidence-based techniques to ensure optimal results with minimal risk.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How long do results last?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Results vary by treatment. Botox typically lasts 3-4 months, fillers 6-18 months, and laser treatments can provide long-lasting results with proper maintenance. Dr. Anum will discuss expected duration and maintenance plans during your consultation.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Do you offer payment plans?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Yes, we offer flexible payment options and can discuss financing plans during your consultation. We believe everyone deserves access to quality skincare and work with patients to find solutions that fit their budget.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How do I cancel or reschedule my appointment?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Please contact us at least 24 hours in advance to cancel or reschedule. You can call our clinic directly or use the contact form on our website. We appreciate advance notice to accommodate other patients.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Preview Section -->
+    <section class="blog-preview" id="blog">
+        <div class="section-header">
+            <p class="section-subtitle">Health Articles</p>
+            <h2>Latest from Our Blog</h2>
+            <p>Expert insights and tips for maintaining healthy, beautiful skin.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="images/Blog preview section card thumbnail.png" alt="Skincare Tips Blog" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
+                <span style="color: var(--color-rose-gold); font-size: 0.9rem; font-weight: 600;">SKINCARE TIPS</span>
+                <h4>10 Essential Steps for Your Daily Skincare Routine</h4>
+                <p style="font-size: 0.9rem; opacity: 0.7;">March 10, 2026</p>
+                <a href="#" class="service-link">Read More →</a>
+            </div>
+
+            <div class="service-card">
+                <img src="images/Blog preview section, card thumbnail 2.png" alt="Chemical Peels Treatment" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
+                <span style="color: var(--color-rose-gold); font-size: 0.9rem; font-weight: 600;">TREATMENTS</span>
+                <h4>Understanding Chemical Peels: What You Need to Know</h4>
+                <p style="font-size: 0.9rem; opacity: 0.7;">March 5, 2026</p>
+                <a href="#" class="service-link">Read More →</a>
+            </div>
+
+            <div class="service-card">
+                <img src="images/Blog preview section, card thumbnail 3.png" alt="Anti-Aging Treatments" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
+                <span style="color: var(--color-rose-gold); font-size: 0.9rem; font-weight: 600;">ANTI-AGING</span>
+                <h4>The Science Behind Botox and Dermal Fillers</h4>
+                <p style="font-size: 0.9rem; opacity: 0.7;">February 28, 2026</p>
+                <a href="#" class="service-link">Read More →</a>
+            </div>
+
+            <div class="service-card">
+                <img src="images/Blog preview section, card thumbnail 4.png" alt="Acne Treatment Guide" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
+                <span style="color: var(--color-rose-gold); font-size: 0.9rem; font-weight: 600;">ACNE CARE</span>
+                <h4>Complete Guide to Treating Acne and Preventing Scars</h4>
+                <p style="font-size: 0.9rem; opacity: 0.7;">February 20, 2026</p>
+                <a href="#" class="service-link">Read More →</a>
+            </div>
+
+            <div class="service-card">
+                <img src="images/Blog preview section, card thumbnail 5.png" alt="Hair Restoration" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
+                <span style="color: var(--color-rose-gold); font-size: 0.9rem; font-weight: 600;">HAIR CARE</span>
+                <h4>Hair Restoration: Modern Solutions for Hair Loss</h4>
+                <p style="font-size: 0.9rem; opacity: 0.7;">February 15, 2026</p>
+                <a href="#" class="service-link">Read More →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <p class="section-subtitle">Get in Touch</p>
+            <h2>Contact Us</h2>
+        </div>
+
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Visit Our Clinic</h3>
+                <div style="margin-top: 2rem;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--color-rose-gold); display: flex; align-items: center; gap: 0.5rem;">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; stroke: var(--color-rose-gold); stroke-width: 2;">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Address
+                        </strong>
+                        <p>123 Medical Plaza, Suite 456<br>Beverly Hills, CA 90210</p>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--color-rose-gold); display: flex; align-items: center; gap: 0.5rem;">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; stroke: var(--color-rose-gold); stroke-width: 2;">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Phone
+                        </strong>
+                        <p>(555) 123-4567</p>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--color-rose-gold);" class="whatsapp-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"/>
+                            </svg>
+                            WhatsApp
+                        </strong>
+                        <p>(555) 123-4567</p>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--color-rose-gold); display: flex; align-items: center; gap: 0.5rem;">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; stroke: var(--color-rose-gold); stroke-width: 2;">
+                                <rect x="2" y="4" width="20" height="16" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="m2 7 10 7 10-7" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Email
+                        </strong>
+                        <p>info@dranum.com</p>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--color-rose-gold);">🕐 Working Hours</strong>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                        Saturday: 10:00 AM - 4:00 PM<br>
+                        Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-image">
+                <form class="booking-form" id="contactForm" style="background: white; padding: 2rem; border-radius: 20px;">
+                    <h3 style="margin-bottom: 1.5rem; grid-column: 1 / -1;">Send us a Message</h3>
+                    <div class="form-group">
+                        <label for="contactName">Name</label>
+                        <input type="text" id="contactName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email</label>
+                        <input type="email" id="contactEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactPhone">Phone</label>
+                        <input type="tel" id="contactPhone">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactSubject">Subject</label>
+                        <input type="text" id="contactSubject" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" required></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn-primary" style="width: 100%;">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Detail Modal -->
+    <div id="serviceModal" class="service-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeServiceModal()">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <div class="modal-body">
+                <div class="modal-icon" id="modalIcon"></div>
+                <h2 id="modalTitle"></h2>
+                <p class="modal-subtitle" id="modalSubtitle"></p>
+
+                <div class="modal-details">
+                    <div class="detail-section">
+                        <h3>Treatment Overview</h3>
+                        <p id="modalOverview"></p>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Benefits</h3>
+                        <ul id="modalBenefits"></ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>What to Expect</h3>
+                        <p id="modalExpect"></p>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Duration & Results</h3>
+                        <p id="modalDuration"></p>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="scrollToBooking(); closeServiceModal();" style="width: 100%; margin-top: 2rem;">
+                    Book This Treatment
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 class="logo">Dr. Anum</h4>
+                <p>Expert dermatology and cosmetic treatments for your most confident skin.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="/admin" style="color: var(--color-rose-gold); font-weight: 600;">Staff</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Medical Dermatology</a></li>
+                    <li><a href="#">Cosmetic Treatments</a></li>
+                    <li><a href="#">Laser Procedures</a></li>
+                    <li><a href="#">Hair Restoration</a></li>
+                    <li><a href="#">Skincare Plans</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li>123 Medical Plaza, Suite 456</li>
+                    <li>Beverly Hills, CA 90210</li>
+                    <li>(555) 123-4567</li>
+                    <li>info@dranum.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dr. Anum. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/supabase-config.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

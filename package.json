@@ -1,0 +1,28 @@
+{
+  "name": "dr-anum-website",
+  "version": "1.0.0",
+  "description": "Professional dermatology website with admin CMS",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "init-db": "node backend/models/database.js",
+    "create-admin": "node tools/create-admin.js",
+    "seed": "node tools/seed-data.js"
+  },
+  "keywords": ["dermatology", "medical", "cms", "booking"],
+  "author": "Dr. Anum",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "sqlite3": "^5.1.6",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

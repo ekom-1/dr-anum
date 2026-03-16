@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Dr. Anum</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css?v=3.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>Dr. Anum</h1>
+                <p>Admin Dashboard</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+                <div id="loginError" class="error-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-dashboard" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Dr. Anum</h2>
+                <p>Admin Panel</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-section="appointments">
+                    <span class="nav-icon">📅</span>
+                    <span>Appointments</span>
+                </a>
+                <a href="#" class="nav-item" data-section="services">
+                    <span class="nav-icon">💉</span>
+                    <span>Services</span>
+                </a>
+                <a href="#" class="nav-item" data-section="testimonials">
+                    <span class="nav-icon">⭐</span>
+                    <span>Testimonials</span>
+                </a>
+                <a href="#" class="nav-item" data-section="blog">
+                    <span class="nav-icon">📝</span>
+                    <span>Blog Posts</span>
+                </a>
+                <a href="#" class="nav-item" data-section="contact">
+                    <span class="nav-icon">✉️</span>
+                    <span>Contact Forms</span>
+                </a>
+                <a href="#" class="nav-item" data-section="profile">
+                    <span class="nav-icon">👤</span>
+                    <span>Doctor Profile</span>
+                </a>
+                <a href="#" class="nav-item" data-section="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-item" id="logoutBtn">
+                    <span class="nav-icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="section-header">
+                    <h1>Dashboard</h1>
+                    <p>Welcome to your admin dashboard</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <h3 id="totalAppointments">0</h3>
+                            <p>Total Appointments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-info">
+                            <h3 id="pendingAppointments">0</h3>
+                            <p>Pending Appointments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💉</div>
+                        <div class="stat-info">
+                            <h3 id="totalServices">0</h3>
+                            <p>Active Services</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✉️</div>
+                        <div class="stat-info">
+                            <h3 id="unreadMessages">0</h3>
+                            <p>Unread Messages</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h2>Recent Appointments</h2>
+                    <div id="recentAppointments" class="table-container">
+                        <p>Loading...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Appointments Section -->
+            <section id="appointments" class="content-section">
+                <div class="section-header">
+                    <div>
+                        <h1>Appointments</h1>
+                        <p>Manage patient appointments</p>
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="pending">Pending</button>
+                        <button class="filter-btn" data-filter="approved">Approved</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                        <button class="filter-btn" data-filter="cancelled">Cancelled</button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="appointmentsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Patient Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Service</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="9" class="loading">Loading appointments...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services" class="content-section">
+                <div class="section-header">
+                    <h1>Services</h1>
+                    <button class="btn-primary" onclick="showServiceModal()">Add New Service</button>
+                </div>
+
+                <div class="table-container">
+                    <table id="servicesTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Slug</th>
+                                <th>Price</th>
+                                <th>Duration</th>
+                                <th>Visible</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="7">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section id="testimonials" class="content-section">
+                <div class="section-header">
+                    <h1>Testimonials</h1>
+                    <button class="btn-primary" onclick="showTestimonialModal()">Add New Testimonial</button>
+                </div>
+
+                <div class="table-container">
+                    <table id="testimonialsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Patient Name</th>
+                                <th>Treatment</th>
+                                <th>Rating</th>
+                                <th>Visible</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="6">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Blog Section -->
+            <section id="blog" class="content-section">
+                <div class="section-header">
+                    <div>
+                        <h1>Blog Posts</h1>
+                        <p>Create and manage health articles</p>
+                    </div>
+                    <button class="btn-primary" onclick="showBlogModal()"><i class="fas fa-plus"></i> Create New Post</button>
+                </div>
+
+                <div class="table-container">
+                    <table id="blogTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Author</th>
+                                <th>Status</th>
+                                <th>Published</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="7" class="loading">Loading blog posts...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Contact Forms Section -->
+            <section id="contact" class="content-section">
+                <div class="section-header">
+                    <div>
+                        <h1>Contact Form Submissions</h1>
+                        <p>View and manage contact form submissions</p>
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="unread">Unread</button>
+                        <button class="filter-btn" data-filter="read">Read</button>
+                        <button class="filter-btn" data-filter="replied">Replied</button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="contactTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Message</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="7" class="loading">Loading contact submissions...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Doctor Profile Section -->
+            <section id="profile" class="content-section">
+                <div class="section-header">
+                    <h1>Doctor Profile</h1>
+                    <p>Update doctor information</p>
+                </div>
+
+                <form id="profileForm" class="admin-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="doctorName">Full Name</label>
+                            <input type="text" id="doctorName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="specialty">Specialty</label>
+                            <input type="text" id="specialty" name="specialty" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="qualifications">Qualifications</label>
+                        <textarea id="qualifications" name="qualifications" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="biography">Biography</label>
+                        <textarea id="biography" name="biography" rows="5"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="experienceYears">Years of Experience</label>
+                            <input type="number" id="experienceYears" name="experienceYears">
+                        </div>
+                        <div class="form-group">
+                            <label for="photoUrl">Photo URL</label>
+                            <input type="text" id="photoUrl" name="photoUrl">
+                        </div>
+                    </div>
+
+                    <h3>Social Media Links</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="socialFacebook">Facebook</label>
+                            <input type="text" id="socialFacebook" name="socialFacebook">
+                        </div>
+                        <div class="form-group">
+                            <label for="socialInstagram">Instagram</label>
+                            <input type="text" id="socialInstagram" name="socialInstagram">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="socialTiktok">TikTok</label>
+                            <input type="text" id="socialTiktok" name="socialTiktok">
+                        </div>
+                        <div class="form-group">
+                            <label for="socialWhatsapp">WhatsApp</label>
+                            <input type="text" id="socialWhatsapp" name="socialWhatsapp">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Update Profile</button>
+                </form>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="content-section">
+                <div class="section-header">
+                    <h1>Site Settings</h1>
+                    <p>Configure website settings and customization</p>
+                </div>
+
+                <form id="settingsForm" class="admin-form">
+                    <h3><i class="fas fa-info-circle"></i> General Settings</h3>
+                    <div class="form-group">
+                        <label for="siteName">Site Name</label>
+                        <input type="text" id="siteName" name="siteName" placeholder="Dr. Anum - Premium Dermatology">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="siteDescription">Site Description</label>
+                        <textarea id="siteDescription" name="siteDescription" rows="3" placeholder="Professional dermatology services..."></textarea>
+                    </div>
+
+                    <h3><i class="fas fa-phone"></i> Contact Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="clinicPhone">Phone Number</label>
+                            <input type="text" id="clinicPhone" name="clinicPhone" placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label for="clinicEmail">Email Address</label>
+                            <input type="email" id="clinicEmail" name="clinicEmail" placeholder="info@dranum.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clinicAddress">Clinic Address</label>
+                        <textarea id="clinicAddress" name="clinicAddress" rows="2" placeholder="123 Medical Plaza, Suite 456..."></textarea>
+                    </div>
+
+                    <h3><i class="fas fa-palette"></i> Design Customization</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="primaryColor">Primary Color (Rose Gold)</label>
+                            <input type="color" id="primaryColor" name="primaryColor" value="#D4A574">
+                        </div>
+                        <div class="form-group">
+                            <label for="accentColor">Accent Color</label>
+                            <input type="color" id="accentColor" name="accentColor" value="#C9A882">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fontFamily">Font Family</label>
+                        <select id="fontFamily" name="fontFamily">
+                            <option value="DM Sans">DM Sans (Default)</option>
+                            <option value="Inter">Inter</option>
+                            <option value="Poppins">Poppins</option>
+                            <option value="Montserrat">Montserrat</option>
+                            <option value="Lato">Lato</option>
+                        </select>
+                    </div>
+
+                    <h3><i class="fas fa-cog"></i> Advanced Settings</h3>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="enableBooking" name="enableBooking" checked>
+                            Enable Online Booking
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="enableBlog" name="enableBlog" checked>
+                            Enable Blog Section
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="enableTestimonials" name="enableTestimonials" checked>
+                            Show Testimonials
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Save Settings</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Service -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="serviceModalTitle">Add Service</h2>
+                <span class="close" onclick="closeServiceModal()">&times;</span>
+            </div>
+            <form id="serviceForm" class="modal-form">
+                <input type="hidden" id="serviceId" name="id">
+                <div class="form-group">
+                    <label for="serviceName">Service Name</label>
+                    <input type="text" id="serviceName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="serviceSlug">Slug</label>
+                    <input type="text" id="serviceSlug" name="slug" required>
+                </div>
+                <div class="form-group">
+                    <label for="serviceDescription">Description</label>
+                    <textarea id="serviceDescription" name="description" rows="4"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="servicePrice">Price</label>
+                        <input type="text" id="servicePrice" name="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceDuration">Duration</label>
+                        <input type="text" id="serviceDuration" name="duration">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="serviceVisible" name="visible" checked>
+                        Visible on website
+                    </label>
+                </div>
+                <button type="submit" class="btn-primary">Save Service</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Blog Post -->
+    <div id="blogModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2 id="blogModalTitle"><i class="fas fa-pen"></i> Create Blog Post</h2>
+                <span class="close" onclick="closeBlogModal()">&times;</span>
+            </div>
+            <form id="blogForm" class="modal-form">
+                <input type="hidden" id="blogId" name="id">
+
+                <div class="form-group">
+                    <label for="blogTitle">Post Title *</label>
+                    <input type="text" id="blogTitle" name="title" required placeholder="Enter post title">
+                </div>
+
+                <div class="form-group">
+                    <label for="blogSlug">URL Slug *</label>
+                    <input type="text" id="blogSlug" name="slug" required placeholder="url-friendly-slug">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="blogCategory">Category</label>
+                        <select id="blogCategory" name="category">
+                            <option value="Skin Care">Skin Care</option>
+                            <option value="Treatments">Treatments</option>
+                            <option value="Health Tips">Health Tips</option>
+                            <option value="Beauty">Beauty</option>
+                            <option value="Wellness">Wellness</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="blogAuthor">Author</label>
+                        <input type="text" id="blogAuthor" name="author" value="Dr. Anum">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="blogExcerpt">Excerpt</label>
+                    <textarea id="blogExcerpt" name="excerpt" rows="2" placeholder="Brief summary..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="blogContent">Content *</label>
+                    <textarea id="blogContent" name="content" rows="10" required placeholder="Write your article content here..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="blogFeaturedImage">Featured Image URL</label>
+                    <input type="text" id="blogFeaturedImage" name="featuredImage" placeholder="https://...">
+                </div>
+
+                <div class="form-group">
+                    <label for="blogTags">Tags (comma-separated)</label>
+                    <input type="text" id="blogTags" name="tags" placeholder="skincare, beauty, health">
+                </div>
+
+                <h4>SEO Settings</h4>
+                <div class="form-group">
+                    <label for="blogMetaTitle">Meta Title</label>
+                    <input type="text" id="blogMetaTitle" name="metaTitle" placeholder="SEO title">
+                </div>
+
+                <div class="form-group">
+                    <label for="blogMetaDescription">Meta Description</label>
+                    <textarea id="blogMetaDescription" name="metaDescription" rows="2" placeholder="SEO description"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="blogStatus">Status</label>
+                        <select id="blogStatus" name="status">
+                            <option value="draft">Draft</option>
+                            <option value="published">Published</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="blogPublishedAt">Publish Date</label>
+                        <input type="datetime-local" id="blogPublishedAt" name="publishedAt">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Save Post</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Testimonial -->
+    <div id="testimonialModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="testimonialModalTitle">Add Testimonial</h2>
+                <span class="close" onclick="closeTestimonialModal()">&times;</span>
+            </div>
+            <form id="testimonialForm" class="modal-form">
+                <input type="hidden" id="testimonialId" name="id">
+                <div class="form-group">
+                    <label for="patientName">Patient Name</label>
+                    <input type="text" id="patientName" name="patientName" required>
+                </div>
+                <div class="form-group">
+                    <label for="treatment">Treatment</label>
+                    <input type="text" id="treatment" name="treatment" required>
+                </div>
+                <div class="form-group">
+                    <label for="rating">Rating</label>
+                    <select id="rating" name="rating">
+                        <option value="5">5 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="2">2 Stars</option>
+                        <option value="1">1 Star</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="testimonialText">Testimonial</label>
+                    <textarea id="testimonialText" name="testimonialText" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="testimonialVisible" name="visible" checked>
+                        Visible on website
+                    </label>
+                </div>
+                <button type="submit" class="btn-primary">Save Testimonial</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/supabase-config.js"></script>
+    <script src="js/admin-supabase.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

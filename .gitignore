@@ -1,0 +1,8 @@
+.env
+node_modules/
+.tmp/
+*.db
+*.log
+.DS_Store
+credentials.json
+token.json
