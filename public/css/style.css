@@ -819,18 +819,19 @@ section {
     flex-direction: column;
     padding: var(--spacing-xl) var(--spacing-md);
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
-    transition: var(--transition-smooth);
+    transition: right 0.3s ease-in-out;
     z-index: 1001;
     overflow-y: auto;
   }
 
   .nav-links.active {
-    right: 0;
+    right: 0 !important;
   }
 
   .mobile-menu-toggle {
-    display: flex;
+    display: flex !important;
     z-index: 1002;
+    position: relative;
   }
 
   .hero-content,
@@ -997,7 +998,11 @@ section {
   }
 
   .nav-links.active {
-    right: 0;
+    right: 0 !important;
+  }
+
+  .mobile-menu-toggle {
+    display: flex !important;
   }
 
   .hero-content,
