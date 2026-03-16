@@ -1061,8 +1061,14 @@ td:first-child strong {
 
 @media (max-width: 1024px) {
     .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 9999;
         transform: translateX(-100%);
         transition: transform var(--transition-base);
+        box-shadow: var(--shadow-xl);
     }
 
     .sidebar.active {
@@ -1071,7 +1077,8 @@ td:first-child strong {
 
     .main-content {
         margin-left: 0;
-        padding: 1.5rem;
+        padding: 1rem;
+        width: 100%;
     }
 
     .form-row {
@@ -1079,77 +1086,164 @@ td:first-child strong {
     }
 
     .stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
     .section-header {
         flex-direction: column;
         align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .section-header > div {
+        width: 100%;
+    }
+
+    .filter-buttons {
+        width: 100%;
+        justify-content: flex-start;
     }
 
     .table-container {
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     table {
         min-width: 800px;
     }
+
+    /* Add mobile menu toggle button */
+    .admin-dashboard::before {
+        content: '☰';
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        z-index: 9998;
+        background: var(--gradient-primary);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: var(--shadow-lg);
+    }
 }
 
 @media (max-width: 640px) {
     .login-container {
-        padding: 2rem;
+        padding: 2rem 1.5rem;
         margin: 1rem;
+        width: calc(100% - 2rem);
     }
 
     .login-header h1 {
-        font-size: 2rem;
-    }
-
-    .section-header h1 {
         font-size: 1.75rem;
     }
 
-    .stat-card {
-        padding: 1.5rem;
-    }
-
-    .stat-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-    }
-
-    .stat-info h3 {
-        font-size: 1.75rem;
-    }
-
-    th, td {
-        padding: 1rem;
+    .login-header p {
         font-size: 0.875rem;
     }
 
-    .action-btn {
-        padding: 0.5rem 1rem;
+    .section-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .section-header p {
+        font-size: 0.875rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stat-card {
+        padding: 1.25rem;
+    }
+
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+
+    .stat-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .stat-info p {
         font-size: 0.75rem;
-        margin-bottom: 0.5rem;
+    }
+
+    th, td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.8125rem;
+    }
+
+    .action-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+        margin-bottom: 0.25rem;
+        display: inline-block;
+        width: auto;
     }
 
     .status-dropdown {
-        min-width: 110px;
+        min-width: 100px;
         font-size: 0.75rem;
-        padding: 0.5rem 0.75rem;
+        padding: 0.5rem;
     }
 
     .filter-buttons {
         width: 100%;
+        gap: 0.5rem;
     }
 
     .filter-btn {
         flex: 1;
-        min-width: 80px;
-        padding: 0.5rem 1rem;
+        min-width: 70px;
+        padding: 0.5rem 0.75rem;
         font-size: 0.75rem;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 0.875rem 1.5rem;
+        font-size: 0.875rem;
+    }
+
+    .main-content {
+        padding: 0.75rem;
+        padding-top: 4rem;
+    }
+
+    .recent-activity {
+        padding: 1.25rem;
+    }
+
+    .recent-activity h2 {
+        font-size: 1.25rem;
+    }
+
+    .admin-form {
+        padding: 1rem;
+    }
+
+    .form-group label {
+        font-size: 0.875rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 0.875rem;
+        padding: 0.75rem;
     }
 }
 
@@ -1288,17 +1382,55 @@ td:first-child strong {
 
 @media (max-width: 768px) {
     table {
-        font-size: 0.875rem;
+        font-size: 0.8125rem;
     }
 
     th, td {
-        padding: 0.875rem 0.75rem;
+        padding: 0.75rem 0.5rem;
     }
 
     .action-btn {
-        display: block;
-        width: 100%;
-        margin-bottom: 0.5rem;
+        display: inline-block;
+        width: auto;
+        margin-right: 0.25rem;
+        margin-bottom: 0.25rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+        padding: 1.5rem;
+    }
+
+    .modal-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .modal-large {
+        max-width: 95%;
+    }
+
+    .sidebar {
+        width: 280px;
+    }
+
+    .sidebar-header {
+        padding: 1.5rem;
+    }
+
+    .sidebar-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .nav-item {
+        padding: 0.875rem 1.25rem;
+        font-size: 0.875rem;
+    }
+
+    .nav-icon {
+        font-size: 1.25rem;
     }
 }
 

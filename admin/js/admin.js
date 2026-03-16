@@ -1066,8 +1066,80 @@ document.getElementById('settingsForm').addEventListener('submit', async (e) => 
 // Initialize
 // ===================================
 
+// Mobile menu toggle for admin dashboard
+function initMobileMenu() {
+    // Create mobile menu button
+    const menuBtn = document.createElement('button');
+    menuBtn.className = 'mobile-menu-btn';
+    menuBtn.innerHTML = '☰';
+    menuBtn.style.cssText = `
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        z-index: 9998;
+        background: linear-gradient(135deg, #D4A574 0%, #E8C9A0 100%);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        border: none;
+    `;
+
+    // Show button on mobile
+    if (window.innerWidth <= 1024) {
+        menuBtn.style.display = 'flex';
+    }
+
+    // Toggle sidebar
+    menuBtn.addEventListener('click', () => {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.classList.toggle('active');
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+        const sidebar = document.querySelector('.sidebar');
+        if (window.innerWidth <= 1024 &&
+            sidebar.classList.contains('active') &&
+            !sidebar.contains(e.target) &&
+            !menuBtn.contains(e.target)) {
+            sidebar.classList.remove('active');
+        }
+    });
+
+    // Close sidebar when nav item clicked on mobile
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', () => {
+            if (window.innerWidth <= 1024) {
+                document.querySelector('.sidebar').classList.remove('active');
+            }
+        });
+    });
+
+    document.body.appendChild(menuBtn);
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 1024) {
+            menuBtn.style.display = 'flex';
+        } else {
+            menuBtn.style.display = 'none';
+            document.querySelector('.sidebar').classList.remove('active');
+        }
+    });
+}
+
 // Filter button handlers for appointments
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize mobile menu
+    initMobileMenu();
+
     // Appointments filter buttons
     const appointmentFilters = document.querySelectorAll('#appointments .filter-btn');
     appointmentFilters.forEach(btn => {
