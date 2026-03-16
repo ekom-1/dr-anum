@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "name": "dr-anum",
+  "builds": [
+    {
+      "src": "backend/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/server.js"
+    },
+    {
+      "src": "/admin/(.*)",
+      "dest": "admin/$1"
+    },
+    {
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|webp|svg|ico|txt|xml))",
+      "dest": "public/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "public/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}

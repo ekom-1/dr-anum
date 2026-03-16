@@ -1,0 +1,41 @@
+# Vercel Environment Variables
+# Copy paste these in Vercel Dashboard → Settings → Environment Variables
+
+NODE_ENV=production
+PORT=3000
+JWT_SECRET=dr-anum-secret-key-2026-change-in-production-xyz123
+
+# Email Configuration (Testing - Update with real values later)
+EMAIL_SERVICE=gmail
+EMAIL_USER=test@example.com
+EMAIL_PASSWORD=test-password-replace-later
+ADMIN_EMAIL=admin@dranum.com
+
+# Clinic Information
+CLINIC_PHONE=(555) 123-4567
+CLINIC_EMAIL=info@dranum.com
+CLINIC_ADDRESS=123 Medical Plaza, Suite 456, Beverly Hills, CA 90210
+
+# Database
+DATABASE_PATH=./.tmp/dranum.db
+
+# Site Configuration (Update with your actual Vercel domain after deployment)
+SITE_URL=https://dr-anum.vercel.app
+SITE_NAME=Dr. Anum - Premium Dermatology
+
+# Supabase Configuration (IMPORTANT - Required for forms to work!)
+SUPABASE_URL=https://dgbxlrzxxeqploptckul.supabase.co
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRnYnhscnp4eGVxcGxvcHRja3VsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1OTEwNzYsImV4cCI6MjA4OTE2NzA3Nn0.Cr0I3h2iPWxQYNWmCUmnibzO1SULlwn_RyChEXfyAow
+
+# ============================================
+# IMPORTANT NOTES:
+# ============================================
+# 1. Testing ke liye ye fake email variables kaam karenge
+# 2. Booking/Contact forms Supabase mein save honge (working!)
+# 3. Email notifications nahi jayenge (fake email credentials)
+# 4. Baad mein real Gmail credentials add karne ke liye:
+#    - Gmail App Password generate karo (myaccount.google.com/apppasswords)
+#    - EMAIL_USER aur EMAIL_PASSWORD update karo
+# 5. SITE_URL ko apne actual Vercel domain se replace karo deployment ke baad
+# 6. JWT_SECRET ko strong random string se replace karo production mein
+# 7. Supabase variables already working hain - forms data save hoga!
