@@ -28,7 +28,7 @@ function showDashboard() {
     loadDashboardData();
 }
 
-// Login form handler
+// Login form handler - Simple client-side auth for Vercel deployment
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -36,24 +36,22 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const password = document.getElementById('password').value;
     const errorDiv = document.getElementById('loginError');
 
-    try {
-        const response = await fetch(`${API_BASE}/admin/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password })
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            authToken = data.token;
-            localStorage.setItem('adminToken', authToken);
-            showDashboard();
-        } else {
-            errorDiv.textContent = 'Invalid username or password';
-        }
-    } catch (error) {
-        console.error('Login error:', error);
-        errorDiv.textContent = 'Login failed. Please try again.';
+    // Simple hardcoded authentication (for demo/testing purposes)
+    // In production, use proper backend authentication
+    if (username === 'admin' && password === 'admin123') {
+        // Generate a simple token
+        authToken = 'demo-token-' + Date.now();
+        localStorage.setItem('adminToken', authToken);
+        errorDiv.textContent = '';
+        showDashboard();
+    } else {
+        errorDiv.textContent = 'Invalid username or password';
+        errorDiv.style.display = 'block';
+        errorDiv.style.color = '#E57373';
+        errorDiv.style.marginTop = '1rem';
+        errorDiv.style.padding = '0.75rem';
+        errorDiv.style.background = '#FFEBEE';
+        errorDiv.style.borderRadius = '8px';
     }
 });
 
@@ -333,12 +331,22 @@ async function deleteAppointment(id) {
 
 async function loadServices() {
     try {
-        const response = await apiRequest('/admin/services');
-        const services = await response.json();
-
         const tbody = document.querySelector('#servicesTable tbody');
+        tbody.innerHTML = '<tr><td colspan="7" class="loading">Loading services...</td></tr>';
 
-        if (services.length === 0) {
+        // Check if Supabase client is initialized
+        if (!window.supabaseClient) {
+            throw new Error('Supabase client not initialized');
+        }
+
+        const { data: services, error } = await window.supabaseClient
+            .from('services')
+            .select('*')
+            .order('sort_order', { ascending: true });
+
+        if (error) throw error;
+
+        if (!services || services.length === 0) {
             tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No services found</td></tr>';
             return;
         }
@@ -359,6 +367,8 @@ async function loadServices() {
         `).join('');
     } catch (error) {
         console.error('Error loading services:', error);
+        const tbody = document.querySelector('#servicesTable tbody');
+        tbody.innerHTML = '<tr><td colspan="7" class="empty-state" style="color: red;">Error loading services. Check console.</td></tr>';
     }
 }
 
@@ -451,12 +461,22 @@ async function deleteService(id) {
 
 async function loadTestimonials() {
     try {
-        const response = await apiRequest('/admin/testimonials');
-        const testimonials = await response.json();
-
         const tbody = document.querySelector('#testimonialsTable tbody');
+        tbody.innerHTML = '<tr><td colspan="6" class="loading">Loading testimonials...</td></tr>';
 
-        if (testimonials.length === 0) {
+        // Check if Supabase client is initialized
+        if (!window.supabaseClient) {
+            throw new Error('Supabase client not initialized');
+        }
+
+        const { data: testimonials, error } = await window.supabaseClient
+            .from('testimonials')
+            .select('*')
+            .order('sort_order', { ascending: true });
+
+        if (error) throw error;
+
+        if (!testimonials || testimonials.length === 0) {
             tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No testimonials found</td></tr>';
             return;
         }
@@ -476,6 +496,8 @@ async function loadTestimonials() {
         `).join('');
     } catch (error) {
         console.error('Error loading testimonials:', error);
+        const tbody = document.querySelector('#testimonialsTable tbody');
+        tbody.innerHTML = '<tr><td colspan="6" class="empty-state" style="color: red;">Error loading testimonials. Check console.</td></tr>';
     }
 }
 
@@ -566,12 +588,22 @@ async function deleteTestimonial(id) {
 
 async function loadBlogPosts() {
     try {
-        const response = await apiRequest('/admin/blog');
-        const posts = await response.json();
-
         const tbody = document.querySelector('#blogTable tbody');
+        tbody.innerHTML = '<tr><td colspan="7" class="loading">Loading blog posts...</td></tr>';
 
-        if (posts.length === 0) {
+        // Check if Supabase client is initialized
+        if (!window.supabaseClient) {
+            throw new Error('Supabase client not initialized');
+        }
+
+        const { data: posts, error } = await window.supabaseClient
+            .from('blog_posts')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        if (!posts || posts.length === 0) {
             tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No blog posts found</td></tr>';
             return;
         }
@@ -592,6 +624,8 @@ async function loadBlogPosts() {
         `).join('');
     } catch (error) {
         console.error('Error loading blog posts:', error);
+        const tbody = document.querySelector('#blogTable tbody');
+        tbody.innerHTML = '<tr><td colspan="7" class="empty-state" style="color: red;">Error loading blog posts. Check console.</td></tr>';
     }
 }
 
@@ -938,8 +972,17 @@ if (!document.getElementById('notification-animations')) {
 
 async function loadDoctorProfile() {
     try {
-        const response = await apiRequest('/doctor-profile');
-        const profile = await response.json();
+        // Check if Supabase client is initialized
+        if (!window.supabaseClient) {
+            throw new Error('Supabase client not initialized');
+        }
+
+        const { data: profile, error } = await window.supabaseClient
+            .from('doctor_profile')
+            .select('*')
+            .single();
+
+        if (error && error.code !== 'PGRST116') throw error; // PGRST116 = no rows returned
 
         if (profile) {
             document.getElementById('doctorName').value = profile.name || '';
@@ -966,24 +1009,42 @@ document.getElementById('profileForm').addEventListener('submit', async (e) => {
         specialty: document.getElementById('specialty').value,
         qualifications: document.getElementById('qualifications').value,
         biography: document.getElementById('biography').value,
-        experienceYears: parseInt(document.getElementById('experienceYears').value) || 0,
-        photoUrl: document.getElementById('photoUrl').value,
-        socialFacebook: document.getElementById('socialFacebook').value,
-        socialInstagram: document.getElementById('socialInstagram').value,
-        socialTiktok: document.getElementById('socialTiktok').value,
-        socialWhatsapp: document.getElementById('socialWhatsapp').value
+        experience_years: parseInt(document.getElementById('experienceYears').value) || 0,
+        photo_url: document.getElementById('photoUrl').value,
+        social_facebook: document.getElementById('socialFacebook').value,
+        social_instagram: document.getElementById('socialInstagram').value,
+        social_tiktok: document.getElementById('socialTiktok').value,
+        social_whatsapp: document.getElementById('socialWhatsapp').value
     };
 
     try {
-        await apiRequest('/admin/doctor-profile', {
-            method: 'PUT',
-            body: JSON.stringify(formData)
-        });
+        // Check if profile exists
+        const { data: existing, error: fetchError } = await window.supabaseClient
+            .from('doctor_profile')
+            .select('*')
+            .single();
 
-        alert('Doctor profile updated successfully');
+        if (existing) {
+            // Update existing profile
+            const { error } = await window.supabaseClient
+                .from('doctor_profile')
+                .update(formData)
+                .eq('id', existing.id);
+
+            if (error) throw error;
+        } else {
+            // Insert new profile
+            const { error } = await window.supabaseClient
+                .from('doctor_profile')
+                .insert([formData]);
+
+            if (error) throw error;
+        }
+
+        showNotification('Doctor profile updated successfully', 'success');
     } catch (error) {
         console.error('Error updating profile:', error);
-        alert('Failed to update profile');
+        showNotification('Failed to update profile', 'error');
     }
 });
 
