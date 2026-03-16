@@ -43,6 +43,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -51,6 +53,9 @@ body {
   background-color: var(--color-ivory);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
 }
 
 /* === Typography === */
@@ -96,12 +101,14 @@ a {
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
   z-index: 1000;
   background: rgba(250, 247, 245, 0.95);
   backdrop-filter: blur(10px);
   padding: 1.5rem 5%;
   transition: var(--transition-smooth);
   border-bottom: 1px solid transparent;
+  overflow-x: hidden;
 }
 
 .navbar.scrolled {
@@ -219,6 +226,8 @@ a {
   padding: calc(60px + 80px) 5% 60px 5%;
   background: linear-gradient(135deg, var(--color-ivory) 0%, var(--color-nude) 100%);
   overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .hero::before {
@@ -247,6 +256,7 @@ a {
   align-items: stretch;
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 
 .hero-text h1 {
@@ -369,6 +379,8 @@ section {
   padding: var(--spacing-xl) 5%;
   max-width: 1400px;
   margin: 0 auto;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .section-header {
@@ -776,18 +788,40 @@ section {
 
 /* === Responsive Design === */
 @media (max-width: 968px) {
+  html {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  .navbar {
+    width: 100%;
+    padding: 1rem 5%;
+  }
+
+  .nav-container {
+    width: 100%;
+  }
+
   .nav-links {
     position: fixed;
     top: 0;
     right: -100%;
     height: 100vh;
     width: 280px;
+    max-width: 80vw;
     background: var(--color-white);
     flex-direction: column;
     padding: var(--spacing-xl) var(--spacing-md);
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
     transition: var(--transition-smooth);
     z-index: 1001;
+    overflow-y: auto;
   }
 
   .nav-links.active {
@@ -803,20 +837,24 @@ section {
   .about-content {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
+    width: 100%;
   }
 
   .hero {
     padding: calc(60px + 40px) 5% 40px 5%;
     min-height: auto;
+    width: 100%;
   }
 
   .hero-text {
     text-align: center;
+    width: 100%;
   }
 
   .hero-cta {
     flex-direction: column;
     align-items: stretch;
+    width: 100%;
   }
 
   .hero-cta .btn-primary,
@@ -826,40 +864,71 @@ section {
 
   .trust-badges {
     justify-content: center;
+    width: 100%;
   }
 
   .hero-image {
     min-height: 400px;
+    width: 100%;
   }
 
   .about-image img {
     min-height: 400px;
+    width: 100%;
   }
 
   .booking-form {
     grid-template-columns: 1fr;
-  }
-
-  .navbar {
-    padding: 1rem 5%;
+    width: 100%;
   }
 
   .logo {
     font-size: 1.5rem;
   }
+
+  section {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .services-grid,
+  .stats-grid {
+    width: 100%;
+  }
 }
 
 @media (max-width: 640px) {
+  html {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  .navbar {
+    width: 100%;
+    padding: 0.875rem 5%;
+  }
+
   .services-grid {
     grid-template-columns: 1fr;
+    width: 100%;
   }
 
   .credentials {
     grid-template-columns: 1fr;
+    width: 100%;
   }
 
   section {
     padding: var(--spacing-md) 5%;
+    width: 100%;
+    max-width: 100vw;
   }
 
   h1 {
@@ -880,6 +949,7 @@ section {
 
   .hero {
     padding: calc(60px + 30px) 5% 30px 5%;
+    width: 100%;
   }
 
   .hero-text p {
@@ -888,10 +958,12 @@ section {
 
   .hero-image {
     min-height: 300px;
+    width: 100%;
   }
 
   .about-image img {
     min-height: 300px;
+    width: 100%;
   }
 
   .badge {
@@ -900,6 +972,7 @@ section {
 
   .service-card {
     padding: 1.5rem;
+    width: 100%;
   }
 
   .testimonial-text {
@@ -914,19 +987,29 @@ section {
   .footer-content {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
-  }
-
-  .navbar {
-    padding: 0.875rem 5%;
+    width: 100%;
   }
 
   .nav-links {
     width: 100%;
+    max-width: 100vw;
     right: -100%;
   }
 
   .nav-links.active {
     right: 0;
+  }
+
+  .hero-content,
+  .about-content,
+  .booking-form,
+  .form-group {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
